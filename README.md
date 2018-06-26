@@ -14,3 +14,7 @@ fm = FactorizationMachines(l_factors=10)
 fm.fit(x_data, y_data)
 fm.predict(x_data)
 ```
+
+To-Do:
+------
+- [ ] StarSpace
