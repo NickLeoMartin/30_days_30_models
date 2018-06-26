@@ -3,7 +3,7 @@ Assortment of TensorFlow models
 
 FactorizationMachines:
 ----------------------
-Implementation of original (paper)[https://www.csie.ntu.edu.tw/~b97053/paper/Rendle2010FM.pdf] by Steffen Rendel.
+Implementation of original [paper](https://www.csie.ntu.edu.tw/~b97053/paper/Rendle2010FM.pdf) by Steffen Rendel.
 ```python
 from fm.model import FactorizationMachines
 from utils import generate_rendle_dummy_dataset
