@@ -39,14 +39,21 @@ def generate_classification_style_dataset():
 		[0,0,1,1,1,0],
 		[0,0,1,1,0,0],
 		[0,0,1,1,1,0]])
-	y_data = np.array([
-		[1, 0],
-		[1, 0],
-		[1, 0],
-		[0, 1],
-		[0, 1],
-		[0, 1]])
+	# y_data = np.array([
+	# 	[1, 0],
+	# 	[1, 0],
+	# 	[1, 0],
+	# 	[0, 1],
+	# 	[0, 1],
+	# 	[0, 1]])
 
+	y_data = np.array([
+		[1, 0, 0],
+		[1, 0, 0],
+		[0, 0, 1],
+		[0, 0, 1],
+		[0, 1, 0],
+		[0, 1, 0]])
 	print("Returning classification style dataset")
 	return x_data, y_data
 

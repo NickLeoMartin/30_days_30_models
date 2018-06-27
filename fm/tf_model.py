@@ -16,9 +16,9 @@ class FactorizationMachines(object):
   Example:
   --------
   from fm.tf_model import FactorizationMachines
-  from utils import generate_rendle_dummy_dataset
+  from utils import generate_rendle_style_dataset
 
-  x_data, y_data = generate_rendle_dummy_dataset()
+  x_data, y_data = generate_rendle_style_dataset()
   
   fm = FactorizationMachines(l_factors=10)
   fm.fit(x_data, y_data)

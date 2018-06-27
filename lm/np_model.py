@@ -4,7 +4,6 @@ import numpy as np
 
 class LogisticRegression(object):
   """
-  import numpy as np
   from lm.np_model import LogisticRegression
   from utils import generate_classification_style_dataset
 
@@ -44,16 +43,18 @@ class LogisticRegression(object):
       Y = np.array(Y)
 
     ## Obtain matrix dimensions
-    self.n_classes = np.unique(Y).size 
+    self.n_classes = Y.shape[1]
     self.n_rows, self.n_cols = X.shape
 
     ## Randomly initialize weights and bias terms
     self.W = np.random.rand(self.n_rows,self.n_classes)
     self.B = np.random.rand(self.n_classes)
 
+    ## Loop through epochs and update parameters
     for epoch in range(self.n_epochs):
       ## Forward pass
       probs = self.activation_func(np.dot(X,self.W)+self.B)
+      print(probs)
       gradients = Y - probs
 
       ## Weight and bias update
