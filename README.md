@@ -6,10 +6,10 @@ Factorization Machines:
 TensorFlow implementation of the original [paper](https://www.csie.ntu.edu.tw/~b97053/paper/Rendle2010FM.pdf) by Steffen Rendel.
 ```python
 from fm.model import FactorizationMachines
-from utils import generate_rendle_dummy_dataset
+from utils import generate_rendle_style_dataset
 
 ## Obtain data
-x_data, y_data = generate_rendle_dummy_dataset()
+x_data, y_data = generate_rendle_style_dataset()
 
 ## Fit and predict
 fm = FactorizationMachines(l_factors=10)
