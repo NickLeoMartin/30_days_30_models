@@ -1,8 +1,5 @@
 """
-Order-2 Factorization Machines
-------------------------------
-Paper: https://www.csie.ntu.edu.tw/~b97053/paper/Rendle2010FM.pdf
-Blog: http://nowave.it/factorization-machines-with-tensorflow.html
+Factorization Machines for Regression 
 """
 import numpy as np
 import tensorflow as tf

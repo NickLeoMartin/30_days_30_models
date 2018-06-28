@@ -1,5 +1,5 @@
 """
-Support Vector Machines 
+Support Vector Machines for Classification
 """
 import numpy as np
 import tensorflow as tf
@@ -10,8 +10,8 @@ import tensorflow as tf
 
 class SupportVectorMachines(object):
   """
-  Paper: https://www.csie.ntu.edu.tw/~b97053/paper/Rendle2010FM.pdf
-  
+  Binary class SVM with l2-normalization of the weights
+
   Example:
   --------
   from support_vector_machines_tf import SupportVectorMachines
