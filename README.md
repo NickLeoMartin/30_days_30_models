@@ -5,7 +5,7 @@ Factorization Machines:
 ----------------------
 TensorFlow implementation of the original [paper](https://www.csie.ntu.edu.tw/~b97053/paper/Rendle2010FM.pdf) by Steffen Rendel.
 ```python
-from fm.model import FactorizationMachines
+from factorization_machines_tf import FactorizationMachines
 from utils import generate_rendle_style_dataset
 
 ## Obtain data
@@ -21,7 +21,7 @@ Logistic Regression:
 --------------------
 A multi-class, Numpy implementation with l2-norm regularization:
 ```python
-from lm.np_model import LogisticRegression
+from logistic_regression_np import LogisticRegression
 from utils import generate_classification_style_dataset
 
 ## Obtain data
@@ -32,6 +32,23 @@ lr = LogisticRegression()
 lr.fit(X, Y)
 lr.predict(X)
 ```
+
+Support Vector Machines:
+--------------------
+A binary class, Tensorflow implementation with l2-norm regularization:
+```python
+from support_vector_machines_tf import SupportVectorMachines
+from utils import generate_classification_style_dataset
+
+## Obtain data
+X, Y = generate_classification_style_dataset('binary')
+
+## Fit and predict
+lr = SupportVectorMachines()
+lr.fit(X, Y)
+lr.predict(X)
+```
+
 To-Do:
 ------
 In no particular order:
