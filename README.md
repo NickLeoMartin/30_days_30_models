@@ -51,7 +51,7 @@ lr.predict(X)
 
 To-Do:
 ------
-In no particular order:
+Models no particular order:
 - [ ] Word2Vec
 - [ ] Word Mover's Distance
 - [ ] Sequence2Sequence models
@@ -64,3 +64,7 @@ In no particular order:
 - [ ] Metric Learning models
 - [ ] Decision Tree
 - [ ] Random Forests
+
+Extras:
+- [ ] Standard datasets: classification, regression, ranking etc.
+- [ ] Visualisations of the learned decision functions
