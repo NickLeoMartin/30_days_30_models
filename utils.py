@@ -28,7 +28,7 @@ def generate_rendle_style_dataset():
 
 
 
-def generate_classification_style_dataset():
+def generate_classification_style_dataset(classification='multiclass'):
 	"""
 	Dummy data to test models
 	"""
@@ -39,21 +39,25 @@ def generate_classification_style_dataset():
 		[0,0,1,1,1,0],
 		[0,0,1,1,0,0],
 		[0,0,1,1,1,0]])
-	# y_data = np.array([
-	# 	[1, 0],
-	# 	[1, 0],
-	# 	[1, 0],
-	# 	[0, 1],
-	# 	[0, 1],
-	# 	[0, 1]])
 
-	y_data = np.array([
-		[1, 0, 0],
-		[1, 0, 0],
-		[0, 0, 1],
-		[0, 0, 1],
-		[0, 1, 0],
-		[0, 1, 0]])
+	if classification=='multiclass':
+		y_data = np.array([
+			[1, 0, 0],
+			[1, 0, 0],
+			[0, 0, 1],
+			[0, 0, 1],
+			[0, 1, 0],
+			[0, 1, 0]])
+	elif classification=='binary':
+		y_data = np.array([
+			[1],
+			[1],
+			[1],
+			[-1],
+			[-1],
+			[-1]])
+	else:
+		raise Exception("Only binary or multiclass classification supported")
 	print("Returning classification style dataset")
 	return x_data, y_data
 
