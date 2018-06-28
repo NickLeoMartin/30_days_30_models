@@ -1,10 +1,13 @@
+"""
+Logistic Regression for Classification
+"""
 import numpy as np
 
 ## TODO: Batch iterator for large datasets
 
 class LogisticRegression(object):
   """
-  from lm.np_model import LogisticRegression
+  from logistic_regression_np import LogisticRegression
   from utils import generate_classification_style_dataset
 
   X, Y = generate_classification_style_dataset()

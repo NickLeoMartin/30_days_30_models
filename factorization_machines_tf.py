@@ -15,7 +15,7 @@ class FactorizationMachines(object):
   
   Example:
   --------
-  from fm.tf_model import FactorizationMachines
+  from factorization_machines_tf import FactorizationMachines
   from utils import generate_rendle_style_dataset
 
   x_data, y_data = generate_rendle_style_dataset()
