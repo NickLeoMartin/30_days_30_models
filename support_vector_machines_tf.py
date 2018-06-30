@@ -67,7 +67,7 @@ class SupportVectorMachines(object):
         tf.multiply(alpha,l2_norm)) 
 
       ## Predictions
-      Y_pred = tf.sign(model_output)
+      Y_pred = tf.sign(model_output,name="predictions")
 
       ## Accuracy 
       accuracy = tf.divide(tf.reduce_sum(tf.cast(tf.equal(Y_pred,Y),tf.float32)),self.n_dim)
@@ -86,7 +86,7 @@ class SupportVectorMachines(object):
     Train model
     """
     ## Get ops and variables
-    accuracy, loss, optimizer, init,\
+    accuracy, error, optimizer, init,\
     W, X, Y, Y_pred = self.get_model(X_data.shape)
 
     ## Set session
@@ -99,28 +99,18 @@ class SupportVectorMachines(object):
 
       ## Train for num_epochs
       for epoch in range(self.num_epochs):
-        print(f"Epoch: {epoch}")
         indices = np.arange(self.batch_size)
         np.random.shuffle(indices)
         x_batch, y_batch = X_data[indices], Y_data[indices]
-        sess.run(optimizer, feed_dict={X: X_data, Y: Y_data})
+        batch_feed_dict = {X: x_batch, Y: y_batch}
+        sess.run(optimizer, feed_dict=batch_feed_dict)
 
-      ## Retrieve metrics, predictions and weights
-      feed_dict = {X: X_data, Y: Y_data}
-      accuracy_ = sess.run(accuracy, feed_dict=feed_dict)
-      preds_ = sess.run(Y_pred, feed_dict=feed_dict)
-      weights_ = sess.run(W, feed_dict=feed_dict)
-      loss_ = sess.run(loss, feed_dict=feed_dict)
-
-    if self.verbose:
-      print(f"accuracy : {accuracy_}")
-      print(f"loss : {loss_}")
-      print(f"predictions : {preds_}")
-      print(f"weights : {weights_}")
+        if self.verbose:
+          ## Retrieve metrics, predictions and weights
+          batch_accuracy, batch_loss = sess.run([accuracy, error], feed_dict=batch_feed_dict)
+          print(f"Epoch: {epoch} Accuracy : {batch_accuracy:.3f} Loss : {batch_loss[0]:.3f}")
 
     ## Set variables
-    self.X = X
-    self.y_pred = Y_pred
     self.sess = sess
 
   def predict(self, X_data):
@@ -128,7 +118,9 @@ class SupportVectorMachines(object):
     Predict using trained model
     """
     with self.sess.as_default() as sess:
-      preds = sess.run(self.y_pred, feed_dict={self.X: X_data})
+      Y_pred_op = self.graph.get_tensor_by_name("predictions:0")
+      X_op = self.graph.get_tensor_by_name("X:0")
+      preds = sess.run(Y_pred_op, feed_dict={X_op: X_data})
 
     if self.verbose:
       print(f"Test set predictions : {preds}")

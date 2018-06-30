@@ -90,24 +90,17 @@ class LogisticRegression(object):
 
       ## Train for num_epochs
       for epoch in range(self.num_epochs):
-        print(f"Epoch: {epoch}")
         indices = np.arange(self.batch_size)
         np.random.shuffle(indices)
         x_batch, y_batch = X_data[indices], Y_data[indices]
-        sess.run(optimizer, feed_dict={X: X_data, Y: Y_data})
+        batch_feed_dict = {X: x_batch, Y: y_batch}
+        sess.run(optimizer, feed_dict=batch_feed_dict)
 
-      ## Retrieve metrics, predictions and weights
-      feed_dict = {X: X_data, Y: Y_data}
-      accuracy_ = sess.run(accuracy, feed_dict=feed_dict)
-      preds_ = sess.run(Y_pred, feed_dict=feed_dict)
-      weights_ = sess.run(W, feed_dict=feed_dict)
-      loss_ = sess.run(loss, feed_dict=feed_dict)
-
-    if self.verbose:
-      print(f"accuracy : {accuracy_}")
-      print(f"loss : {loss_}")
-      print(f"predictions : {preds_}")
-      print(f"weights : {weights_}")
+        if self.verbose:
+          ## Retrieve metrics, predictions and weights
+          feed_dict = {X: x_batch, Y: y_batch}
+          batch_accuracy, batch_loss = sess.run([accuracy, loss], feed_dict=batch_feed_dict)
+          print(f"Epoch: {epoch} Accuracy : {batch_accuracy:.3f} Loss : {batch_loss:.3f}")
 
     ## Set variables
     self.sess = sess
