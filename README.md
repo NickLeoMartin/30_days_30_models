@@ -1,5 +1,5 @@
-# 30_days_30_models
-Assortment of TensorFlow and Numpy models. One a day for 30 days. Loosely follows Scikit-Learn API. For personal learning, not production. Will refactor as I go. Starting with more traditional machine learning models.
+# ml_model_lib
+Assortment of TensorFlow and Numpy models. Loosely follows Scikit-Learn API. For personal learning, not production. Will refactor as I go. Starting with more traditional machine learning models.
 
 Factorization Machines:
 ----------------------
