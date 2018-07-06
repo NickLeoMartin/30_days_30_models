@@ -52,7 +52,7 @@ lr.predict(X)
 To-Do:
 ------
 Models no particular order:
-- [ ] Word2Vec
+- [ ] Word2Vec/Item2Vec
 - [ ] Word Mover's Distance
 - [ ] Sequence2Sequence models
 - [ ] Singular Value Decomposition & Latent Semantic Indexing
